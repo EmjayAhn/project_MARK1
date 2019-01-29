@@ -21,7 +21,7 @@ class Spider(scrapy.Spider):
             items_row = trademark.xpath('./li')
             for each in items_row:
                 f.write(each.xpath('./a/p[1]/text()').extract()[0].replace('\n','').replace('\t','') + ',')
-                f.write(each.xpath('./a/span/img/@src').extract()[0])
+                f.write(each.xpath('./a/span/img/@src').extract()[0] + ',')
                 f.write(each.xpath('./a/p[1]/span/text()')[0].extract().replace('\n','').replace('\t','') + ',')
                 f.write(each.xpath('./a/p[3]/text()')[0].extract().replace('\n','').replace('\t','') + ',\n')
         f.close()
